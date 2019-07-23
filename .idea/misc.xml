@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/goods/pom.xml" />
         <option value="$PROJECT_DIR$/seckill-order-server1/pom.xml" />
         <option value="$PROJECT_DIR$/eureka-server1/pom.xml" />
+        <option value="$PROJECT_DIR$/common/pom.xml" />
       </list>
     </option>
   </component>

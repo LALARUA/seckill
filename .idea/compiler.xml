@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="authenticate" />
+        <module name="common" />
         <module name="eureka-server1" />
         <module name="goods" />
         <module name="seckill" />
@@ -16,6 +17,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="authenticate" target="1.8" />
+      <module name="common" target="1.8" />
       <module name="eureka-server1" target="1.8" />
       <module name="goods" target="1.8" />
       <module name="seckill" target="1.8" />
