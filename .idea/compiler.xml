@@ -10,7 +10,6 @@
         <module name="common" />
         <module name="eureka-server1" />
         <module name="goods" />
-        <module name="seckill" />
         <module name="seckill-order-server1" />
         <module name="zuul" />
       </profile>

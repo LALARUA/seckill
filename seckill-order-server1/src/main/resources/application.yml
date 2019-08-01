@@ -2,13 +2,10 @@ server:
   port: 8080
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    url: jdbc:mysql://47.106.215.35:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     username: root
     password: 123456
-  jpa:
-    database: MySQL
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    show-sql: true
-    hibernate:
-      ddl-auto: update
+mybatis:
+    type-aliases-package: cn.zx.common.entity
+    mapper-locations: classpath:mapper/*.xml
 
