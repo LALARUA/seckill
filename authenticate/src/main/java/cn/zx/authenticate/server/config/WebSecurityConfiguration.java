@@ -1,5 +1,7 @@
 package cn.zx.authenticate.server.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -7,6 +9,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,6 +23,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true,securedEnabled = true)
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
+    @Qualifier(value = "UserDetailsService")
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+
     @Bean
     public PasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
@@ -27,9 +35,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("zx").password(bCryptPasswordEncoder().encode("123456")).roles("ADMIN")
-                .and()
-                .withUser("qw").password(bCryptPasswordEncoder().encode("123456")).roles("USER");
+        auth.userDetailsService(userDetailsService);
     }
 }
